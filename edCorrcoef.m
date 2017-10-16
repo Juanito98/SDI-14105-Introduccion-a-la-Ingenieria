@@ -7,7 +7,9 @@ function [ c ] = edCorrcoef( x, y )
     yMean = mean(y);
     diffX = x - xMean;
     diffY = y - yMean;
+    n = length(x);
     c(1, 2) = sum(diffX.*diffY) / sqrt(sum(diffX.^2) * sum(diffY.^2));
+    c(1, 2) = (n * mean(diffX.*diffY)) / (std(x) * std(y) * (n - 1));
     c(2, 1) = c(1, 2);
 end
 
